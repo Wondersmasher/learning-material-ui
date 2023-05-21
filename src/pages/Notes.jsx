@@ -9,6 +9,7 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
+import { blue, green, red, yellow } from "@mui/material/colors";
 import React from "react";
 
 const sx = {
@@ -33,7 +34,20 @@ const Notes = ({ notes, setNotes }) => {
         <Card elevation={1}>
           <CardHeader
             avatar={
-              <Avatar sx={sx.avatar}>{note.category[0].toUpperCase()}</Avatar>
+              <Avatar
+                sx={{
+                  backgroundColor:
+                    note.category === "class"
+                      ? yellow[700]
+                      : note.category === "money"
+                      ? blue[700]
+                      : note.category === "todo"
+                      ? red[700]
+                      : green[700],
+                }}
+              >
+                {note.category[0].toUpperCase()}
+              </Avatar>
             }
             action={
               <IconButton onClick={() => handleDelete(note.id)}>
